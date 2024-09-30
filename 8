@@ -1,0 +1,70 @@
+//Напишите программу (интерактивный консольный калькулятор), которая запрашивает у пользователя на выбор математическую операцию (операторы: + - * / ! ^, где "^" - возведение в степень, а "!" - факториал) и целые числа, с которыми нужно выполнить эту операцию. 
+//Программа должна выводить результат выполнения выбранной математической операции.
+
+
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    int result = 1;
+    for (int i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+int power(int base, int exp) {
+    int result = 1;
+    for (int i = 0; i < exp; i++) {
+        result *= base;
+    }
+    return result;
+}
+
+int main() {
+    char operation;
+    cout << "Выберите операцию (+, -, *, /, !, ^): ";
+    cin >> operation;
+
+    if (operation == '!' || operation == '^') {
+        int num1;
+        cout << "Введите целое число: ";
+        cin >> num1;
+
+        if (operation == '!') {
+            cout << "Факториал " << num1 << " равен " << factorial(num1) << endl;
+        } else {
+            int num2;
+            cout << "Введите степень: ";
+            cin >> num2;
+            cout << num1 << " в степени " << num2 << " равно " << power(num1, num2) << endl;
+        }
+    } else {
+        int num1, num2;
+        cout << "Введите два целых числа: ";
+        cin >> num1 >> num2;
+
+        switch (operation) {
+            case '+':
+                cout << "Результат: " << num1 + num2 << endl;
+                break;
+            case '-':
+                cout << "Результат: " << num1 - num2 << endl;
+                break;
+            case '*':
+                cout << "Результат: " << num1 * num2 << endl;
+                break;
+            case '/':
+                if (num2 != 0) {
+                    cout << "Результат: " << static_cast<double>(num1) / num2 << endl;
+                } else {
+                    cout << "Ошибка: деление на ноль." << endl;
+                }
+                break;
+            default:
+                cout << "Неверная операция." << endl;
+        }
+    }
+
+    return 0;
+}
