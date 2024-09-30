@@ -1,0 +1,19 @@
+//Напишите программу, которая возводит число 2 в степень 10 с помощью цикла while.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int base = 2;
+    int exponent = 10;
+    int result = 1;
+    int count = 0;
+
+    while (count < exponent) {
+        result *= base;
+        count++;
+    }
+
+    cout << "2 в степени 10 равно " << result << endl;
+    return 0;
+}
